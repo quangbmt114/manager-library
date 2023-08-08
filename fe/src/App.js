@@ -1,21 +1,34 @@
-
-import { Route, Router } from 'react-router-dom';
-import './App.css';
-import DefaultLayout from './Layout/DefaultLayout/Header';
-import { publicPage } from './router';
+import { publicPage } from "./router";
+import DefaultLayout from "./Layout/DefaultLayout";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+import { Fragment } from "react";
 
 function App() {
-
   return (
-    <Router>
+    <Fragment >
       <div className="App">
-      {publicPage.map((router,index)=>{
-        const Page = router.component
-        const Layout = router.layout||DefaultLayout
-        
-      })}
-    </div>
-    </Router>
+      <Router>
+        <Routes>
+          {publicPage.map((router, index) => {
+            const Page = router.component;
+            const Layout = router.layout || DefaultLayout;
+            return (
+              <Route
+                key={index}
+                path={router.path}
+                element={
+                  <Layout>
+                    <Page />
+                  </Layout>
+                }
+              />
+            );
+          })}
+        </Routes>
+      </Router>
+      </div>
+    </Fragment>
   );
 }
 
