@@ -9,6 +9,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+<<<<<<< Updated upstream
       {publicPage.map((router,index)=>{
         const Page = router.component
         const Layout = router.layout||DefaultLayout
@@ -16,6 +17,30 @@ function App() {
       })}
     </div>
     </Router>
+=======
+      <Router>
+        <Routes>
+          {publicPage.map((router, index) => {
+            console.log(index);
+            const Page = router.component;
+            const Layout = router.layout || DefaultLayout;
+            return (
+              <Route
+                key={index}
+                path={router.path}
+                element={
+                  <Layout>
+                    <Page />
+                  </Layout>
+                }
+              />
+            );
+          })}
+        </Routes>
+      </Router>
+      </div>
+    </Fragment>
+>>>>>>> Stashed changes
   );
 }
 
